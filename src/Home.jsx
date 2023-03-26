@@ -1,11 +1,19 @@
-import { Button, Text } from "react-native";
-const HomeScreen = ({ navigation }) => {
+import { useContext, useEffect } from "react";
+import { Button, FlatList, Image, Text } from "react-native";
+import { CardsPokemon } from "./CardsPokemon.jsx/CardsPokemon";
+import { dataContext } from "./context/Context";
+
+export const HomeScreen = ({ navigation }) => {
+  const { data } = useContext(dataContext);
+
+ 
   return (
-    <Button
-      title="Go to Jane's profile"
-      onPress={() => navigation.navigate("Profile", { name: "Andres" ,age:12 })}
-    />
+    <>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <CardsPokemon {...item} />}
+        keyExtractor={(item) => item.name}
+      />
+    </>
   );
 };
-
-export default HomeScreen;
