@@ -10,7 +10,7 @@ const Context = ({ children }) => {
   useEffect(() => {
      getApi()
       .then((resp) => {
-        setData(resp.data);
+        setData(resp.data.results);
       })
   }, []);
 
