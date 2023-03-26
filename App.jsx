@@ -4,14 +4,10 @@ import React from "react";
 import Context from "./src/context/Context";
 import ProfileScreen from "./src/Profile";
 import { PokedexTitle } from "./src/IconNavBar/IconNavBar";
-import icon from './src/img/pokedex-icon.jpg'
+import icon from "./src/img/pokedex-icon.jpg";
 import { HomeScreen } from "./src/Home";
 
 const Stack = createStackNavigator();
-
-
-
-
 
 function App() {
   return (
@@ -20,7 +16,9 @@ function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Pokedex"
-            options={{ headerTitle: () => <PokedexTitle icon={icon} title='Pokedex' /> }}
+            options={{
+              headerTitle: () => <PokedexTitle icon={icon} title="Pokedex" />,
+            }}
             component={HomeScreen}
           />
           <Stack.Screen name="Profile" component={ProfileScreen} />
