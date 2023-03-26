@@ -14,7 +14,7 @@ export const HomeScreen = ({ navigation }) => {
       style={{ backgroundColor: "white" }}
       ItemSeparatorComponent={ItemSeparador}
       data={data}
-      renderItem={({ item }) => <CardsPokemon {...item} />}
+      renderItem={({ item }) => <CardsPokemon navigation={navigation} {...item} />}
       keyExtractor={(item) => item.name}
     />
   );
