@@ -25,7 +25,7 @@ function App() {
           <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
-      <StatusBar backgroundColor={"red"} />
+      <StatusBar backgroundColor={"transparent"} />
     </Context>
   );
 }
