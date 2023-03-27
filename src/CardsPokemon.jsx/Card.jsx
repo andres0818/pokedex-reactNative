@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
   normal: { backgroundColor: "#bfbfbf" },
 });
 
-const Card = ({ navigation, tipe, ...props }) => {
+const Card = ({ navigation, type, ...props }) => {
   const styleCard = [
     styles.container,
-    tipe === "fire" && styles.fire,
-    tipe === "grass" && styles.grass,
-    tipe === "water" && styles.water,
-    tipe === "bug" && styles.bug,
-    tipe === "normal" && styles.normal,
+    type === "fire" && styles.fire,
+    type === "grass" && styles.grass,
+    type === "water" && styles.water,
+    type === "bug" && styles.bug,
+    type === "normal" && styles.normal,
   ];
 
   return (
@@ -58,18 +58,18 @@ const Card = ({ navigation, tipe, ...props }) => {
         navigation.navigate("Profile", {
           title: props.name,
           icon: props?.sprites.front_default,
-          tipe,
+          type,
           props,
         })
       }
     >
       <View style={styleCard}>
         <Text style={styles.text}>{props.name}</Text>
-        <Text style={styles.text}>{tipe}</Text>
+        <Text style={styles.text}>{type}</Text>
         {props.sprites?.front_default && (
           <Image
             source={{
-              uri: props.sprites?.front_default,
+              uri: props.sprites?.other.home.front_default,
             }}
             style={styles.img}
           />
