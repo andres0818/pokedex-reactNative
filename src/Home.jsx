@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { CardsPokemon } from "./CardsPokemon.jsx/CardsPokemon";
 import { dataContext } from "./context/Context";
 
@@ -11,7 +11,7 @@ export const HomeScreen = ({ navigation }) => {
   return (
     <FlatList
       columnWrapperStyle={{ justifyContent: "space-around" }}
-      style={styles.flatList}
+      contentContainerStyle={styles.flatList}
       ItemSeparatorComponent={ItemSeparador}
       numColumns={2}
       data={data}
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   flatList: {
-    gap: 10,
+    padding: 5,
+    paddingBottom: 20,
   },
 });

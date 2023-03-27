@@ -1,11 +1,12 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
-import Context from "./src/context/Context";
-import ProfileScreen from "./src/Profile";
 import { PokedexTitle } from "./src/IconNavBar/IconNavBar";
-import icon from "./src/img/pokedex-icon.jpg";
 import { HomeScreen } from "./src/Home";
+import { StatusBar } from "react-native";
+import Context from "./src/context/Context";
+import icon from "./src/img/pokedex-icon.jpg";
+import Profile from "./src/Profile";
 
 const Stack = createStackNavigator();
 
@@ -21,9 +22,10 @@ function App() {
             }}
             component={HomeScreen}
           />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
+      <StatusBar backgroundColor={"red"} />
     </Context>
   );
 }

@@ -11,28 +11,38 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     width: 160,
-    height: 140,
+    height: 100,
     borderColor: "gray",
     backgroundColor: "#ffffff",
     borderRadius: 10,
     elevation: 5,
+    padding: 10,
   },
   img: {
-    width: "60%",
-    height: 150,
+    width: "80%",
+    height: 110,
     position: "absolute",
-    right: -10,
+    right: -26,
     top: 10,
   },
-  subContainer: {},
+  text: {
+    fontSize: 16,
+    fontWeight: "bold",
+    borderRadius: 10,
+    marginBottom: 5,
+    alignSelf: "flex-start",
+    paddingHorizontal: 5,
+    color: "white",
+    backgroundColor: "#82818169",
+  },
   fire: { backgroundColor: "#ff5a5a" },
   water: { backgroundColor: "#5ac0ff" },
-  grass: { backgroundColor: "#68ff74" },
-  bug: { backgroundColor: "#95ff97" },
+  grass: { backgroundColor: "#50ab58" },
+  bug: { backgroundColor: "#407041" },
   normal: { backgroundColor: "#bfbfbf" },
 });
 
-const Card = ({ navigation,tipe, ...props }) => {
+const Card = ({ navigation, tipe, ...props }) => {
   const styleCard = [
     styles.container,
     tipe === "fire" && styles.fire,
@@ -48,14 +58,14 @@ const Card = ({ navigation,tipe, ...props }) => {
         navigation.navigate("Profile", {
           title: props.name,
           icon: props?.sprites.front_default,
+          tipe,
+          props,
         })
       }
     >
       <View style={styleCard}>
-        <View style={styles.subContainer}>
-          <Text style={{ color: "black" }}>{props.name}</Text>
-          <Text style={{ color: "black" }}>{tipe}</Text>
-        </View>
+        <Text style={styles.text}>{props.name}</Text>
+        <Text style={styles.text}>{tipe}</Text>
         {props.sprites?.front_default && (
           <Image
             source={{
