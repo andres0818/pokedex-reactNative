@@ -10,19 +10,25 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <FlatList
-      contentContainerStyle={styles.container}
-      style={{ backgroundColor: "white" }}
+      columnWrapperStyle={{ justifyContent: "space-around" }}
+      style={styles.flatList}
       ItemSeparatorComponent={ItemSeparador}
+      numColumns={2}
       data={data}
-      renderItem={({ item }) => <CardsPokemon navigation={navigation} {...item} />}
+      renderItem={({ item }) => (
+        <CardsPokemon navigation={navigation} {...item} />
+      )}
       keyExtractor={(item) => item.name}
     />
   );
 };
 
 const styles = StyleSheet.create({
-container:{
-  width: '100%',
-  alignItems: 'center',
-}
-})
+  container: {
+    width: "100%",
+    alignItems: "center",
+  },
+  flatList: {
+    gap: 10,
+  },
+});
