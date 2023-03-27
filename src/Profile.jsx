@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "80%",
-    height: "60%",
+    height: "50%",
     position: "absolute",
     display: "flex",
     top: "-30%",
@@ -69,13 +69,40 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontWeight: "bold",
+    fontSize: 20,
     marginLeft: 20,
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
     backgroundColor: "#fffff94b",
     alignSelf: "flex-start",
     borderRadius: 10,
     textAlign: "center",
     color: "#000000",
+  },
+  description: {
+    transform: [{ translateY: Dimensions.get("window").width * 0.4 }],
+    gap: 10,
+  },
+  infoContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#919191",
+    width: "90%",
+    height: "12%",
+    marginHorizontal: "5%",
+    borderRadius: 10,
+  },
+  descriptionTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+    width: 100,
+  },
+  descriptionSubtitle: {
+    textAlign: "center",
+    fontSize: 18,
+    width: 100,
   },
 });
 
@@ -89,22 +116,58 @@ const Profile = ({ route, navigation }) => {
   }, []);
 
   const styleCard = [
-    route.params.tipe === "fire" && styles.fire,
-    route.params.tipe === "grass" && styles.grass,
-    route.params.tipe === "water" && styles.water,
-    route.params.tipe === "bug" && styles.bug,
-    route.params.tipe === "normal" && styles.normal,
+    route.params.type === "fire" && styles.fire,
+    route.params.type === "grass" && styles.grass,
+    route.params.type === "water" && styles.water,
+    route.params.type === "bug" && styles.bug,
+    route.params.type === "normal" && styles.normal,
   ];
-
+  console.log(route.params.props.order);
   return (
     <>
       <View style={styles.container}>
         <View style={styleCard}>
           <Text style={styles.title}>{route.params.title}</Text>
-          <Text style={styles.subTitle}>{route.params.tipe}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.subTitle}>{route.params.type}</Text>
+            <Text style={styles.subTitle}>#0{route.params.props.order}</Text>
+          </View>
         </View>
         <View style={styles.subContainer}>
-          <Image style={styles.img} source={{ uri: route.params.icon }} />
+          <Image
+            style={styles.img}
+            source={{
+              uri: route.params.props.sprites.other["official-artwork"]
+                .front_default,
+            }}
+          />
+
+          <View style={styles.description}>
+            <View style={styles.infoContainer}>
+              <Text style={styles.descriptionTitle}>Type:</Text>
+              <Text style={styles.descriptionSubtitle}>
+                {route.params.type}
+              </Text>
+            </View>
+            <View style={styles.infoContainer}>
+              <Text style={styles.descriptionTitle}>Ability:</Text>
+              <Text style={styles.descriptionSubtitle}>
+                {route.params.props.abilities[1]?.ability.name}
+              </Text>
+            </View>
+            <View style={styles.infoContainer}>
+              <Text style={styles.descriptionTitle}>weight:</Text>
+              <Text style={styles.descriptionSubtitle}>
+                {route.params.props.weight}
+              </Text>
+            </View>
+            <View style={styles.infoContainer}>
+              <Text style={styles.descriptionTitle}>height:</Text>
+              <Text style={styles.descriptionSubtitle}>
+                {route.params.props.height}
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </>
