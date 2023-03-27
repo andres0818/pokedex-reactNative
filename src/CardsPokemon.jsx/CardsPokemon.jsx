@@ -14,5 +14,5 @@ export const CardsPokemon = ({ navigation, ...props }) => {
 
   const elementPokemon = details?.types[0].type.name;
 
-  return <Card tipe={elementPokemon} navigation={navigation} {...details} />;
+  return <Card type={elementPokemon} navigation={navigation} {...details} />;
 };
