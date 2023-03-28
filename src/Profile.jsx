@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#919191",
     width: "90%",
     height: "12%",
     marginHorizontal: "5%",
@@ -114,7 +113,14 @@ const Profile = ({ route, navigation }) => {
       ),
     });
   }, []);
-
+  const styleContainerInfo = [
+    styles.infoContainer,
+    route.params.type === "fire" && { backgroundColor: fire },
+    route.params.type === "grass" && { backgroundColor: grass },
+    route.params.type === "water" && { backgroundColor: water },
+    route.params.type === "bug" && { backgroundColor: bug },
+    route.params.type === "normal" && { backgroundColor: normal },
+  ];
   const styleCard = [
     route.params.type === "fire" && styles.fire,
     route.params.type === "grass" && styles.grass,
@@ -122,7 +128,6 @@ const Profile = ({ route, navigation }) => {
     route.params.type === "bug" && styles.bug,
     route.params.type === "normal" && styles.normal,
   ];
-  console.log(route.params.props.order);
   return (
     <>
       <View style={styles.container}>
@@ -143,25 +148,25 @@ const Profile = ({ route, navigation }) => {
           />
 
           <View style={styles.description}>
-            <View style={styles.infoContainer}>
+            <View style={styleContainerInfo}>
               <Text style={styles.descriptionTitle}>Type:</Text>
               <Text style={styles.descriptionSubtitle}>
                 {route.params.type}
               </Text>
             </View>
-            <View style={styles.infoContainer}>
+            <View style={styleContainerInfo}>
               <Text style={styles.descriptionTitle}>Ability:</Text>
               <Text style={styles.descriptionSubtitle}>
                 {route.params.props.abilities[1]?.ability.name}
               </Text>
             </View>
-            <View style={styles.infoContainer}>
+            <View style={styleContainerInfo}>
               <Text style={styles.descriptionTitle}>weight:</Text>
               <Text style={styles.descriptionSubtitle}>
                 {route.params.props.weight}
               </Text>
             </View>
-            <View style={styles.infoContainer}>
+            <View style={styleContainerInfo}>
               <Text style={styles.descriptionTitle}>height:</Text>
               <Text style={styles.descriptionSubtitle}>
                 {route.params.props.height}
